@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="LoginModule">
+
+<head>
+    <meta charset="utf-8" />
+    <title> Login Page</title>
+
+
+</head>
+<h4><a href="../Views/Registration.html">Registration Page</a></h4>
+<h1>Login Page</h1>
+
+<body ng-controller="LoginController">
+    <table>
+        <tbody>
+            <form name="LoginForm" ng-submit="checkLogin()" method="POST">
+                <tr>
+                    <div>
+                        <td> <label for="email"> UserName/Email: </label></td>
+                        <td> <input required type="text" name="email" ng-model="email" id="email" /></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td> <label for="password"> Password: </label></td>
+                        <td> <input required type="password" name="password" ng-model="password" id="password" /></td>
+                    </div>
+                </tr>
+
+                <div>
+                    <td><input type="submit" value="Login" /></td>
+                </div>
+                </tr>
+            </form>
+        </tbody>
+    </table>
+</body>
+<script src="../Scripts/angular-1.8.0/angular.js "></script>
+<script src="../Scripts/Login.js "></script>
+<script src="../Services/CheckSessionService.js "></script>
+
+</html>

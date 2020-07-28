@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html ng-app="ToDoItemModule">
+
+<head>
+    <meta charset="utf-8" />
+    <title> To Do Dashboard Page</title>
+    <style>
+        #myTable {
+            border: 1px solid;
+        }
+        
+        th,
+        td {
+            border: 1px solid;
+        }
+        
+        .arrow-up {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid black;
+        }
+        
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid black;
+        }
+    </style>
+</head>
+
+<body ng-controller="ToDoController">
+    <h4><a href="../Views/ProfileDashboard.html ">Profile Dashboard Page</a></h4>
+    <h1>To Do Dashboard Page</h1>
+    <h2><a href="../Views/CreateToDo.html ">Create To Do</a></h2>
+    <app-logout></app-logout>
+
+    <div style="padding:0 0 0 30%;">
+        <button type="button" ng-click="Clearfilters()">Clear Filters</button>
+        <button type="button" ng-click="MultipleDelete()">Delete Multiple </button>
+    </div>
+    <br/>
+    <table id="myTable">
+        <tr class="header">
+
+            <th style="width:5%;" ng-click="sortData('todoId')">ToDoId
+                <div ng-class="getSortClass('todoId')"></div>
+            </th>
+            <th style="width:5%;" ng-click="sortData('toDoItem')">ToDo
+                <div ng-class="getSortClass('toDoItem')"></div>
+                <input type="text" id="ToDoInput" ng-model="searchText">
+            </th>
+
+            <th style="width:20%;">(Less Than) Reminder Date <input type="date" name="searchlessthandate" id="searchlessthandate" ng-model="searchlessthandate"></br>
+                (Greater Than) Reminder Date <input type="date" name="searchgreaterthandate" id="searchgreaterthandate" ng-model="searchgreaterthandate"></th>
+
+            <th style="width:15%;">Categories
+                <div>
+                    <select ng-init="categoriesText = ' '" id="categoriesText" ng-model="categoriesText">
+                <option value=" ">---Please select---</option> 
+            <option value="Technical">Technical</option> 
+            <option value="Practical">Practical</option>
+            </select>
+                </div>
+            </th>
+            <th style="width:15%;">Status<br/>
+                <div>
+                    <select ng-init="statusText = ' '" id="statusText" ng-model="statusText">
+            <option value=" ">---Please select---</option>
+        <option value="Done">Done</option> 
+        <option value="Pending">Pending</option>
+        </select>
+                </div>
+            </th>
+            <th style="width:25%;">Is Pending( Items due date greater than current date) <input type="checkbox" id="PendingDate" ng-model="isPending"></th>
+
+
+            <th style="width:5%;">Edit</th>
+            <th style="width:5%;">Delete</th>
+            <th style="width:5%;">Check</th>
+        </tr>
+        <tbody>
+            <tr ng-repeat="todo in todolst  |filter:Ispending | filter : search| filter : Datefilter |filter:getcategories | filter: setstatus | orderBy :sortColumn:reverseSort track by (todo.todoId)">
+                <td>{{todo.todoId}}</td>
+                <td>{{todo.toDoItem}}</td>
+                <td>{{todo.reminderDate}}</td>
+                <td>{{todo.categories}}</td>
+                <td>{{todo.status}}</td>
+                <td>{{todo.date}}</td>
+                <td><input type="button" value="Edit" onclick="OneditRow(this)"></td>
+                <td><input type="button" value="Delete" onclick="OnedeleteRow(this)"></td>
+                <td><input type="checkbox" value="check" name="multicheck" onchange="MultideleteRow(this)"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+<script src="../Scripts/angular-1.8.0/angular.js "></script>
+<script src="../Scripts/ToDoItem.js "></script>
+<script src="../Directives/logoutdirective.js "></script>
+<script src="../Services/CheckSessionService.js "></script>
+
+</html>

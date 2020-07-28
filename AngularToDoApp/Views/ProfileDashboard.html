@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html ng-app="ProfiledashboardModule">
+
+<head>
+    <meta charset="utf-8" />
+    <title> Profile Dashboard Page</title>
+</head>
+
+<body ng-controller="ProfiledashboardController">
+    <div>
+        <h1>Profile Dashboard Page</h1>
+    </div>
+    <app-logout></app-logout>
+    <div style='text-align: center' style="margin:25px 25px 25px 25px;">
+        <input type="button" ng-click="RedirectProfileView()" value="Edit Profile" />
+        <input type="button" ng-click="RedirectToDoView()" value="View ToDoList" />
+    </div>
+
+</body>
+<script src="../Scripts/angular-1.8.0/angular.js "></script>
+<script src="../Scripts/ProfileDashboard.js "></script>
+<script src="../Directives/logoutdirective.js "></script>
+<script src="../Services/CheckSessionService.js "></script>
+
+</html>

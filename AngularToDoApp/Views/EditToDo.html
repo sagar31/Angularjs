@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="EditToDoModule">
+
+<head>
+    <meta charset="utf-8" />
+    <title> Create To Do Page</title>
+</head>
+
+<body ng-controller="EditToDoController">
+
+    <h4><a href="../Views/ToDoItem.html ">To Do Dashboard Page</a></h4>
+    <h1>Edit To Do Page</h1>
+    <app-logout></app-logout>
+    <table>
+        <tbody>
+            <form name="EditToDoForm" ng-submit="UpdateToDoItem()" method="POST">
+                <tr>
+                    <div>
+                        <td> <label for="ToDoItem"> ToDoItem :</label></td>
+                        <td> <input type="text" name="toDoItem" ng-model="toDoItem" id="toDoItem" /></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td> <label for="date"> Date: </label></td>
+                        <td> <input name="date" type="date" id="date" ng-model="date" /></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="categories"> Categories: </label></td>
+                        <td>
+                            <select id="categories" ng-model="categories">
+                    <option value=" ">---Please select---</option> <!-- not selected / blank option -->
+                <option value="Technical">Technical</option> <!-- interpolation -->
+                <option value="Practical">Practical</option>
+                </select></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="status"> Status: </label></td>
+                        <td>
+                            <select id="status" ng-model="status">
+                    <option value=" ">---Please select---</option> <!-- not selected / blank option -->
+                <option value="Done">Done</option> <!-- interpolation -->
+                <option value="Pending">Pending</option>
+                </select></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="isReminder"> isReminder: </label></td>
+                        <td>
+                            <input ng-change="getstatus()" type="radio" name="isReminder" ng-model="isReminder" value="Yes" />Yes
+                            <input ng-change="getstatus()" type="radio" name="isReminder" ng-model="isReminder" value="No" />No
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td> <label ng-show=isVisible for="reminderDate"> Reminder Date: </label></td>
+                        <td> <input ng-required=isVisible ng-show=isVisible name="reminderDate" type="date" id="reminderDate" ng-model="reminderDate" /></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="isPublic"> isPublic: </label></td>
+                        <td>
+                            <input type="radio" name="isPublic" ng-model="isPublic" value="Yes" />Yes
+                            <input type="radio" name="isPublic" ng-model="isPublic" value="No" />No
+                        </td>
+                    </div>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <div>
+                        <td><input type="submit" value="Update" /></td>
+                        <!--<td><input type="button" ng-click="reset(user)" value="Reset" id="reset" /></td>
+                            -->
+                    </div>
+                </tr>
+            </form>
+        </tbody>
+    </table>
+</body>
+<script src="../Scripts/angular-1.8.0/angular.js "></script>
+<script src="../Scripts/EditToDo.js "></script>
+<script src="../Directives/logoutdirective.js "></script>
+<script src="../Services/CheckSessionService.js "></script>
+
+</html>

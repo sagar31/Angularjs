@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html ng-app="RegistrationModule">
+
+<head>
+    <meta charset="utf-8" />
+    <title> Registration Page</title>
+
+
+</head>
+<h4><a href="../Views/Login.html">Login Page</a></h4>
+<h1>Registration Page</h1>
+
+<body ng-controller="RegistrationController">
+    <table>
+        <tbody>
+            <form name="RegistrationForm" ng-submit="checkRegistration()" method="POST">
+                <tr>
+                    <div>
+                        <td> <label for="email"> UserName/Email: </label></td>
+                        <td> <input type="text" name="email" ng-model="email" id="email" required /></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td> <label for="password"> Password: </label></td>
+                        <td> <input type="password" name="password" ng-model="password" requiredid="password" /></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="firstName"> FirstName: </label></td>
+                        <td> <input maxlength="25" type="text" name="firstName" required ng-model="firstName" id="firstName" /></td>
+
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="lastName"> LastName: </label></td>
+                        <td><input maxlength="25" type="text" name="lastName" required ng-model="lastName" id="lastName" /></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="gender"> Gender: </label></td>
+                        <td>
+                            <select ng-init="gender = ''" id="gender" required ng-model="gender">
+                <option value="">---Please select---</option> <!-- not selected / blank option -->
+            <option value="Male">Male</option> <!-- interpolation -->
+            <option value="Female">Female</option>
+            </select></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="address"> Address: </label></td>
+                        <td><textarea maxlength="120" name="address" ng-init="" required type="textArera" ng-model="address" id="address" cols="30" rows="8"> </textarea></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="profileImage">Choose a profile picture:</label></td>
+                        <td><input required type="file" id="profileImage" name="profileImage" ng-model="profileImage" accept="image/*" onchange="angular.element(this).scope().getImageData()"></td>
+                        <div><img style="height:120px;width:120px;border: 1px solid black;" id="output"></div>
+                    </div>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <div>
+                        <td><input type="submit" value="Register" /></td>
+                        <!--<td><input type="button" ng-click="reset(user)" value="Reset" id="reset" /></td>
+                        -->
+                    </div>
+                </tr>
+            </form>
+        </tbody>
+    </table>
+</body>
+<script src="../Scripts/angular-1.8.0/angular.js "></script>
+<script src="../Scripts/RegistrationScript.js "></script>
+<script src="../Services/CheckSessionService.js "></script>
+
+</html>
